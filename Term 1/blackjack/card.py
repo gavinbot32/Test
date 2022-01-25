@@ -9,22 +9,65 @@ class Card(object):
 
     def __str__(self):
         rep = str.format("""
-        ______________
-        |{0}{1}          |
-        |            |
-        |            |
-        |            |
-        |            |
-        |            |
-        |            |
-        |          {1}{0}|
-        ______________
-        
-        
-        
-        """,self.rank,self.suit)
+            ______________
+            |{0}{1}          |
+            |            |
+            |            |
+            |            |
+            |            |
+            |            |
+            |            |
+            |          {1}{0}|
+            ______________
+            
+            
+            
+            """,self.rank,self.suit)
+
         return rep
 
+    def flip(self):
+        self.faceUp =  not self.faceUp
+
+class Pos_card(Card):
+    def __init__(self,rank,suit):
+        super(Pos_card, self).__init__(rank,suit)
+        self.faceUp = False
+
+    def __str__(self):
+        if self.faceUp:
+            rep = str.format("""
+                        ______________
+                        |{0}{1}          |
+                        |            |
+                        |            |
+                        |            |
+                        |            |
+                        |            |
+                        |            |
+                        |          {1}{0}|
+                        ______________
+
+
+
+                        """, self.rank, self.suit)
+        else:
+            rep = str.format("""
+                       ______________
+                       |            |
+                       |            |
+                       |            |
+                       |            |
+                       |            |
+                       |            |
+                       |            |
+                       |            |
+                       ______________
+
+
+
+                       """)
+        return rep
 
 class Hand(object):
 
