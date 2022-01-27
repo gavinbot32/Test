@@ -1,12 +1,17 @@
-import card as c
+from blackjackClasses import *
+from commonGameFunctions import *
 import random
 def main():
-    rank = random.choice(c.Card.RANK)
-    suit = random.choice(c.Card.SUITS)
-    gavin = c.Pos_card(rank,suit)
-    print(gavin)
-    input("press enter to flip")
-    gavin.flip()
-    print(gavin)
+    print("\t\tWelcome to Blackjack!\n")
+    names=[]
+    number = getNum_inRng("How many players? (1-7): ", low=1, high=8)
+    for i in range(number):
+        name = input("enter the players name")
+        names.append(name)
+    game = Bj_Game(names)
+    again = None
+    while again != "n":
+        game.play()
+        again = askYorN("\nDo you want to play again?: ")
 
 main()

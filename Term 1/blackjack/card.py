@@ -36,21 +36,7 @@ class Pos_card(Card):
 
     def __str__(self):
         if self.faceUp:
-            rep = str.format("""
-                        ______________
-                        |{0}{1}          |
-                        |            |
-                        |            |
-                        |            |
-                        |            |
-                        |            |
-                        |            |
-                        |          {1}{0}|
-                        ______________
-
-
-
-                        """, self.rank, self.suit)
+            rep = super(Pos_card, self).__str__()
         else:
             rep = str.format("""
                        ______________
@@ -69,30 +55,7 @@ class Pos_card(Card):
                        """)
         return rep
 
-class Hand(object):
 
-    def __init__(self):
-        self.cards = []
-
-    @property
-    def cards_total(self):
-        return len(self.cards)
-
-    def __str__(self):
-        rep=""
-        if self.cards:
-            for card in self.cards:
-                rep+=str(card)
-        else:
-            rep = "<EMPTY>"
-
-        return rep
-    def add(self,card):
-        self.cards.append(card)
-    def give(self,card,other_hand):
-        self.cards.remove(card)
-        other_hand.add(card)
-
-    def clear(self):
-        self.cards.clear()
-
+if __name__ == "__main__":
+    print("this is not a program try importing and using the classes")
+    input("\n\nPress the enter key to exit")
