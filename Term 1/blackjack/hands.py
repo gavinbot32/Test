@@ -1,4 +1,5 @@
 import card as cards
+import commonGameFunctions as gf
 class Hand(object):
 
     def __init__(self):
@@ -13,9 +14,9 @@ class Hand(object):
         if self.cards:
             for card in self.cards:
                 rep += str(card)
+
         else:
             rep = "<EMPTY>"
-
         return rep
 
     def add(self, card):
@@ -43,14 +44,24 @@ class Deck(Hand):
 
 
     def deal(self,hands_list,per_hand=1):
-        for rounds in range(per_hand):
-            for hand in hands_list:
-                if self.cards:
+        cards_needed = len(hands_list) * per_hand
+        if len(self.cards) >= cards_needed+ len(hands_list)*3:
+            for rounds in range(per_hand):
+                for hand in hands_list:
                     top_card = self.cards[0]
                     self.give(top_card,hand)
-                else:
-                    print("Can't continue deal. Out of cards!")
-                    return
+        else:
+            print("Not enough cards to deal")
+            x = gf.askYorN("do you want to keep playing?")
+            if x == "yes":
+                for hand in hands_list:
+                    hand.clear()
+                self.clear()
+                self.build_deck()
+                self.shuffle()
+                self.deal(hands_list,per_hand)
+            else:
+                return
 
 if __name__ == "__main__":
     print("this is not a program try importing and using the classes")

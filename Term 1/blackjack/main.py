@@ -4,7 +4,7 @@ import random
 def main():
     print("\t\tWelcome to Blackjack!\n")
     names=[]
-    number = getNum_inRng("How many players? (1-7): ", low=1, high=8)
+    number = getNum_inRng("How many players? (1-7): ", 1, 8)
     for i in range(number):
         name = input("enter the players name")
         names.append(name)
